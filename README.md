@@ -1,6 +1,6 @@
 # elementary-cellular-automata
 
-An implementation of elementary cellular automata. The cellular automata is made up of cells. A cell is essentially a square which has a three values, an x and y coordinate, and a value which tells whether the cell has a value of "1"(drawn in white) or "0"(drawn in black). The Cell class has two methods, show: which displays the cell in the correct color, and update which changes the value of cell. 
+An implementation of elementary cellular automata. The cellular automata is made up of cells. A cell is essentially a square which has a three values, an x and y coordinate, and a value which tells whether the cell has a value of "1"(drawn in white) or "0"(drawn in black). The Cell class has two methods, show: which displays the cell in the correct color, and update which changes the value of the cell. 
 
 ```processing
 class Cell{
@@ -26,7 +26,7 @@ class Cell{
   }
 }
 ```
-My implementation uses a 2D array of Cell s. The size of array is based on a desired size of each Cell and designed to fillup the entire screen. When each cell is initialized with a unique x, y coordinate. The value is set to "1" but this is arbitrary and doesn't end up changing the program. 
+My implementation uses a 2D array of Cell(s). The size of array is based on a desired size of each Cell and is calculated so that Cell(s) fillup the entire screen. Each cell is initialized with a unique x, y coordinate. The value is set to "1" but this is arbitrary and doesn't end up changing the program. 
 ```processing
 Cell[][] cells;
 void setup(){
@@ -44,13 +44,16 @@ void setup(){
 In my implementation the value for each Cell is computed every frame.  This is done through the updateValues function. This function takes in two arrays as parameters, values: the initial values for the first row, and a ruleset. This function will through a double for loop in order to access every Cell in cells. 
 
 ```processing
-for(int j = 0; j < cells.length; j++){
+void updateValues(String[] values,String ruleset){
+    
+   for(int j = 0; j < cells.length; j++){
       for(int i = 0; i < cells[0].length; i++){
 ```
-Cells in each row will then be set to a corresponding value in values. 
+Cells in each row will then be set to a corresponding value in values. When j = 0(ie the first row) the values of this row are simpy set to values passed in as an argument. 
 ```processing
            cells[i][j].update(values[i]);
 ```
+However, the values array then updates based on the ruleset. In order to compute each new value in values, we take the value and it's two neighboring values and combine them(they are Strings and will concatanate). We then put this value into the applyRule function. The applyRule function will take in a three digit string of 0s and 1s and return a new value depending on which of the eight possible combinations the input is. 
 
 ```processing
       String[] temp = new String[values.length];

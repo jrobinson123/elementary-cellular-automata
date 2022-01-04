@@ -77,7 +77,7 @@ However, the values array then updates based on the ruleset. In order to compute
         }
      }
 ```
-Every frame the updateValues function is called on new values and a new ruleset. These are determined by mapping the x and y mouse position between 0 and a power of two minus one. For example, since we want ruleset to be a string of 8 0s and 1s, we map between 0 and 255( (2 ** 8) - 1). We then convert the value to binary, that we get our ruleset as some string between 00000000 and 11111111. 
+Every frame the updateValues function is called on new values and a new ruleset. These are determined by mapping the x and y mouse position between 0 and a power of two minus one. For example, since we want ruleset to be a string of 8 0s and 1s, we map between the x-position between 0 and 255( (2 ** 8) - 1). We then convert the value to binary. That way we'll get our ruleset as some string between 00000000 and 11111111. 
 
 ```processing
   ruleset = binary(int(map(mouseX,0,width,0,255)),8);

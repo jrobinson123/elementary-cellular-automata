@@ -1,4 +1,5 @@
 # elementary-cellular-automata
+![](cellularGif.gif);
 
 An implementation of elementary cellular automata. The cellular automata is made up of cells. A cell is essentially a square which has a three values, an x and y coordinate, and a value which tells whether the cell has a value of "1"(drawn in white) or "0"(drawn in black). The Cell class has two methods, show: which displays the cell in the correct color, and update which changes the value of the cell. 
 

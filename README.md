@@ -93,5 +93,12 @@ Every frame the updateValues function is called on new values and a new ruleset.
   
   updateValues(values,ruleset);
 ```
-
+Finally, we dispaly the Cell(s) in cells.
+```processing
+  for(int i = 0; i < cells.length; i++){
+      for(int j = 0; j < cells[0].length; j++){
+        cells[i][j].show();
+      }
+    }
+```
 

@@ -41,7 +41,7 @@ void setup(){
     }
   }
 ```
-In my implementation the value for each Cell is computed every frame.  This is done through the updateValues function. This function takes in two arrays as parameters, values: the initial values for the first row, and a ruleset. This function will through a double for loop in order to access every Cell in cells. 
+In my implementation the value for each Cell is computed every frame.  This is done through the updateValues function. This function takes in two parameters, the array values: the initial values for the first row, and the String ruleset. This function will through a double for loop in order to access every Cell in cells. 
 
 ```processing
 void updateValues(String[] values,String ruleset){
@@ -77,6 +77,21 @@ However, the values array then updates based on the ruleset. In order to compute
         }
      }
 ```
+Every frame the updateValues function is called on new values and a new ruleset. These are determined by mapping the x and y mouse position between 0 and a power of two minus one. For example, since we want ruleset to be a string of 8 0s and 1s, we map between 0 and 255( (2 ** 8) - 1). We then convert the value to binary, that we get our ruleset as some string between 00000000 and 11111111. 
 
+```processing
+  ruleset = binary(int(map(mouseX,0,width,0,255)),8);
+  String[] values = new String[quantity];
+  float temp_fl = map(mouseY,1,height - 1,0,pow(2,quantity) - 1);
+  int temp_int = int(temp_fl);
+  
+  
+  String valuesStr = binary(temp_int, quantity);
+  for(int r = 0; r < values.length; r ++){
+    values[r] = valuesStr.substring(r, r + 1);
+  }
+  
+  updateValues(values,ruleset);
+```
 
 

@@ -53,7 +53,7 @@ Cells in each row will then be set to a corresponding value in values. When j = 
 ```processing
            cells[i][j].update(values[i]);
 ```
-However, the values array then updates based on the ruleset. In order to compute each new value in values, we take an element values and it's two neighboring elements and combine them(they are Strings and will concatanate). We then put this concatanated value into the applyRule function. The applyRule function will take in a three digit string of 0s and 1s and return a new value depending on which of the eight possible combinations the input is. The ruleset determines how possible input combinations correspond to outputted values. 
+However, the values array then updates based on the ruleset. In order to compute each new value in values, we take an element of values and its two neighboring elements and combine them(they are Strings and will concatanate). We then put this concatanated value into the applyRule function. The applyRule function will take in a three digit string of 0s and 1s and return a new value depending on which of the eight possible combinations the input is. The ruleset determines how possible input combinations correspond to outputted values. 
 
 ```processing
       String[] temp = new String[values.length];
